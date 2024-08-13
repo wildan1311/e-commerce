@@ -1,29 +1,24 @@
 <x-guest-layout>
-    {{-- <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Shop') }}
-        </h2>
-    </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <table class="table">
-                    <tr></tr>
-                </table>
-            </div>
-        </div>
-    </div> --}}
-    <div class="container-xl">
+    <div class="container-xl my-5">
         <div class="row about_h1 text-center mb-4">
             <div class="col-md-12">
-                <h4 class="col_blue">Our Product</h4>
+                <h4 class="col_blue text-lg font-black">Our Product</h4>
                 <h1 class="mt-3 mb-0">Best Seller Product</h1>
             </div>
         </div>
+        <form class="max-w-md mx-auto my-3">
+            <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
+            <div class="relative">
+                <input type="search" id="default-search" name="search" value="{{request()->search ?? ''}}"
+                    class="block w-full p-4 ps-20 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Search Products" />
+                <button type="submit"
+                    class="text-white absolute end-2.5 bottom-5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">Search</button>
+            </div>
+        </form>
         <div class="row list_2">
             @foreach ($products as $product)
-                <div class="col-md-3">
+                <div class="col-md-3 mt-2">
                     <div class="list_2im clearfix bg-white shadow_box position-relative">
                         <div class="list_2im1 clearfix">
                             <div class="grid clearfix">
@@ -49,7 +44,6 @@
     @push('js')
         <script>
             function addCart(id) {
-                // prevent
                 $.ajax({
                     type: 'POST',
                     url: '{{ route('cart.add') }}',
