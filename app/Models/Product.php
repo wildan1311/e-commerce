@@ -17,4 +17,8 @@ class Product extends Model
         'isActive',
         'image'
     ];
+
+    public function transaksiDetail(){
+        return $this->hasMany(TransaksiDetail::class, 'product_id', 'id');
+    }
 }
