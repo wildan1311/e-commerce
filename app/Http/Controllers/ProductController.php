@@ -34,12 +34,15 @@ class ProductController extends Controller
     {
         $request->validated();
 
+        $path = @$request->file('image')?->store('product_images', 'public');
+
         try{
             $product = Product::create([
                 'name' => $request->name,
                 'price' => $request->price,
                 'stock' => $request->stock,
                 'isActive' => $request->isActive,
+                'image' => @$path,
             ]);
             return redirect()->route('products.index');
         }catch(Throwable $e){
@@ -66,14 +69,13 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Product $product)
+    public function update(ProductRequest $request, Product $product)
     {
-        $request->validate([
-            'name' => 'required',
-            'price' => 'required|numeric',
-            'stock' => 'required',
-            'isActive' => 'required|numeric|between:0,1',
-        ]);
+        $request->validated();
+
+        if($request->file('image')){
+            $path = $request->file('image')?->store('product_images', 'public');
+        }
 
         try{
             $product->update([
@@ -81,6 +83,7 @@ class ProductController extends Controller
                 'price' => $request->price,
                 'stock' => $request->stock,
                 'isActive' => $request->isActive,
+                'image' => @$path ??  $product->image,
             ]);
             $request->session()->flash('flash.banner', 'Yay it works!');
             $request->session()->flash('flash.bannerStyle', 'success');

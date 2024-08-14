@@ -8,7 +8,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg mt-10">
-                <form action="{{ route('products.store') }}" method="POST">
+                <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <x-label> Name </x-label>
                     <x-input name="name" type="text"> </x-input>
@@ -36,6 +36,11 @@
                         <option value="2">Inactive</option>
                     </select>
                     @error('isActive')
+                        <div class="text-red-500 text-sm">{{ $message }}</div>
+                    @enderror
+                    <x-label> Image </x-label>
+                    <x-input name="image" type="file"></x-input>
+                    @error('image')
                         <div class="text-red-500 text-sm">{{ $message }}</div>
                     @enderror
                     <x-button class="bg-blue-500 float-end m-5">Edit</x-button>

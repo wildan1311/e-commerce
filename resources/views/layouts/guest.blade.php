@@ -42,5 +42,21 @@
 </body>
 
 @stack('js')
+<script>
+    function deleteCart(id){
+                $.ajax({
+                    type: 'POST',
+                    url: '{{ route('cart.destroy') }}',
+                    data: {
+                        'product_id': id,
+                        '_token': '{{ csrf_token() }}'
+                    },
+                    success: function(data) {
+                        alert(data.message);
+                        window.location.reload()
+                    }
+                });
+            }
+</script>
 
 </html>

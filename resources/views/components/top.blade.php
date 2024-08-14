@@ -36,10 +36,10 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4 col-4">
-                                                    <div class="drop_1i1r"><a href="#"><img src="img/1.jpg"
-                                                                class="w-100" alt="abc"></a></div>
+                                                    <div class="drop_1i1r w-10 h-10"><a href="#"><img src="{{asset('storage/'. @$cart['image'])}}"
+                                                                class="w-100" class="object-cover" alt="abc"></a></div>
                                                 </div>
-                                                <div class="col-md-2 col-2">
+                                                <div class="col-md-2 col-2" onclick="deleteCart({{$cart['id']}})">
                                                     <div class="drop_1i1l text-end">
                                                         <h6> <span><i class="fa fa-trash"></i></span></h6>
                                                     </div>

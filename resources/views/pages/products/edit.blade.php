@@ -8,7 +8,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg mt-10">
-                <form action="{{route('products.update', $product->id)}}" method="post">
+                <form action="{{route('products.update', $product->id)}}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <x-label> Name </x-label>
@@ -31,8 +31,13 @@
                         <option selected disabled>Select ones</option>
                         <option value="1" {{$product->isActive == 1 ? 'selected' : ''}}>Active</option>
                         <option value="0" {{$product->isActive != 1? 'selected' : ''}}>Inactive</option>
-                      </select>
-                      @error('isActive')
+                    </select>
+                    @error('isActive')
+                    <div class="text-red-500 text-sm">{{ $message }}</div>
+                    @enderror
+                    <x-label> Image </x-label>
+                    <x-input name="image" type="file" value="{{asset('storage/'.$product->image)}}"></x-input>
+                    @error('image')
                         <div class="text-red-500 text-sm">{{ $message }}</div>
                     @enderror
                     <x-button class="bg-blue-500 float-end m-5">Edit</x-button>

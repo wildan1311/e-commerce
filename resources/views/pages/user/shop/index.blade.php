@@ -23,7 +23,7 @@
                         <div class="list_2im1 clearfix">
                             <div class="grid clearfix">
                                 <figure class="effect-jazz mb-0 w-[270px] h-[270px]">
-                                    <a href="detail.html"><img src="img/6.jpg" class="w-full object-cover"
+                                    <a href="detail.html"><img src="{{asset('storage/'. $product->image)}}" class="w-full object-cover"
                                             alt="abc"></a>
                                 </figure>
                             </div>
