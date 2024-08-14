@@ -36,6 +36,7 @@ Route::middleware([
 
     Route::get('/shop', [ShopController::class, 'index'])->name('shop');
     Route::get('/cart', [CartController::class, 'index'])->name('cart');
+    Route::get('/invoice', [CartController::class, 'invoice'])->name('invoice');
     Route::post('/cart/add', [CartController::class, 'store'])->name('cart.add');
     Route::post('/cart/destroy', [CartController::class, 'destroy'])->name('cart.destroy');
     Route::get('/cart/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
