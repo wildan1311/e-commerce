@@ -31,7 +31,7 @@
                                 <div class="col-md-9 col-9">
                                     <div class="cart_3l1i1">
                                         <h6 class="fw-normal font_12 mt-3">{{$cart['name']}}</h6>
-                                        <h6 class="font_12 mt-3 mb-4">Vendor</h6>
+                                        <h6 class="font_12 mt-3 mb-4">Stock : {{$cart['stock']}}</h6>
                                         <h6 class="font_12 mt-3 mb-3 inline">{{$cart['quantity']}}x</h6>
                                         <h5 class="col_yell mt-3 inline">Rp.{{number_format($cart['price'], 2, ',', '.')}}</h5>
                                     </div>
@@ -75,8 +75,10 @@
                         '_token': '{{ csrf_token() }}'
                     },
                     success: function(data) {
-                        alert(data.message);
-                        window.location.reload()
+                        Toast.fire({
+                            icon: data.status,
+                            title: data.message
+                        })
                     }
                 });
             }
@@ -90,8 +92,10 @@
                         '_token': '{{ csrf_token() }}'
                     },
                     success: function(data) {
-                        alert(data.message);
-                        window.location.reload()
+                        Toast.fire({
+                            icon: data.status,
+                            title: data.message
+                        })
                     }
                 });
             }
