@@ -13,50 +13,35 @@
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="{{ asset('template/img/3.jpg') }}" class="d-block w-100" alt="...">
+                            <img src="{{ asset('template/img/images-4.jpg') }}" class="d-block w-100 object-cover" alt="...">
                             <div class="carousel-caption d-md-block">
-                                <h6>Best Price</h6>
-                                <h2 class="col_yell mt-3">$30.00</h2>
                                 <h1 class="mt-3">The Most Complete Electrical Shop</h1>
                                 <p class="mt-3">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
                                     commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.</p>
                                 <ul class="mt-3 mb-0">
-                                    <li class="d-inline-block text-uppercase me-2"><a class="button" href="#">Shop
-                                            Now</a></li>
-                                    <li class="d-inline-block text-uppercase"><a class="button_1" href="#">View
-                                            Product</a></li>
+                                    <li class="d-inline-block text-uppercase me-2"><a class="button" href="{{route('shop')}}">Go To Shop</a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ asset('template/img/4.jpg') }}" class="d-block w-100" alt="...">
+                            <img src="{{ asset('template/img/images-2.jpg') }}" class="d-block w-100 object-cover" alt="...">
                             <div class="carousel-caption d-md-block">
-                                <h6>Best Price</h6>
-                                <h2 class="col_yell mt-3">$30.00</h2>
                                 <h1 class="mt-3">The Most Complete Electrical Shop</h1>
                                 <p class="mt-3">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
                                     commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.</p>
                                 <ul class="mt-3 mb-0">
-                                    <li class="d-inline-block text-uppercase me-2"><a class="button" href="#">Shop
-                                            Now</a></li>
-                                    <li class="d-inline-block text-uppercase"><a class="button_1" href="#">View
-                                            Product</a></li>
+                                    <li class="d-inline-block text-uppercase me-2"><a class="button" href="{{route('shop')}}">Go To Shop</a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ asset('template/img/5.jpg') }}" class="d-block w-100" alt="...">
+                            <img src="{{ asset('template/img/images-3.jpg') }}" class="d-block w-100 object-cover" alt="...">
                             <div class="carousel-caption d-md-block">
-                                <h6>Best Price</h6>
-                                <h2 class="col_yell mt-3">$30.00</h2>
                                 <h1 class="mt-3">The Most Complete Electrical Shop</h1>
                                 <p class="mt-3">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
                                     commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.</p>
                                 <ul class="mt-3 mb-0">
-                                    <li class="d-inline-block text-uppercase me-2"><a class="button" href="#">Shop
-                                            Now</a></li>
-                                    <li class="d-inline-block text-uppercase"><a class="button_1" href="#">View
-                                            Product</a></li>
+                                    <li class="d-inline-block text-uppercase me-2"><a class="button" href="{{route('shop')}}">Go To Shop</a></li>
                                 </ul>
                             </div>
                         </div>
