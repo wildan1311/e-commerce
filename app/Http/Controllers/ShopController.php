@@ -12,7 +12,7 @@ class ShopController extends Controller
         if($request->search){
             $products = $products->where('name', 'like', '%'.$request->search.'%');
         }
-        $products = $products->get();
+        $products = $products->paginate(20);
         return view('pages.user.shop.index', compact('products'));
     }
 }
