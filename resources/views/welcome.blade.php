@@ -13,35 +13,41 @@
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="{{ asset('template/img/images-4.jpg') }}" class="d-block w-100 object-cover" alt="...">
+                            <img src="{{ asset('template/img/images-4.jpg') }}" class="d-block w-100 object-cover"
+                                alt="...">
                             <div class="carousel-caption d-md-block">
                                 <h1 class="mt-3">The Most Complete Electrical Shop</h1>
                                 <p class="mt-3">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
                                     commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.</p>
                                 <ul class="mt-3 mb-0">
-                                    <li class="d-inline-block text-uppercase me-2"><a class="button" href="{{route('shop')}}">Go To Shop</a></li>
+                                    <li class="d-inline-block text-uppercase me-2"><a class="button"
+                                            href="{{ route('shop') }}">Go To Shop</a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ asset('template/img/images-2.jpg') }}" class="d-block w-100 object-cover" alt="...">
+                            <img src="{{ asset('template/img/images-2.jpg') }}" class="d-block w-100 object-cover"
+                                alt="...">
                             <div class="carousel-caption d-md-block">
                                 <h1 class="mt-3">The Most Complete Electrical Shop</h1>
                                 <p class="mt-3">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
                                     commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.</p>
                                 <ul class="mt-3 mb-0">
-                                    <li class="d-inline-block text-uppercase me-2"><a class="button" href="{{route('shop')}}">Go To Shop</a></li>
+                                    <li class="d-inline-block text-uppercase me-2"><a class="button"
+                                            href="{{ route('shop') }}">Go To Shop</a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ asset('template/img/images-3.jpg') }}" class="d-block w-100 object-cover" alt="...">
+                            <img src="{{ asset('template/img/images-3.jpg') }}" class="d-block w-100 object-cover"
+                                alt="...">
                             <div class="carousel-caption d-md-block">
                                 <h1 class="mt-3">The Most Complete Electrical Shop</h1>
                                 <p class="mt-3">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
                                     commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.</p>
                                 <ul class="mt-3 mb-0">
-                                    <li class="d-inline-block text-uppercase me-2"><a class="button" href="{{route('shop')}}">Go To Shop</a></li>
+                                    <li class="d-inline-block text-uppercase me-2"><a class="button"
+                                            href="{{ route('shop') }}">Go To Shop</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -133,31 +139,25 @@
                 </div>
             </div>
             <div class="row list_2">
-                @foreach ([] as $item)
-                    <div class="col-md-3">
+                @foreach ($products as $product)
+                    <div class="col-md-3 mt-2">
                         <div class="list_2im clearfix bg-white shadow_box position-relative">
                             <div class="list_2im1 clearfix">
                                 <div class="grid clearfix">
-                                    <figure class="effect-jazz mb-0">
-                                        <a href="detail.html"><img src="img/6.jpg" class="w-100"
-                                                alt="abc"></a>
+                                    <figure class="effect-jazz mb-0 w-[270px] h-[270px]">
+                                        <a href="detail.html"><img src="{{ asset('storage/' . $product->image) }}"
+                                                class="w-full object-cover" alt="abc"></a>
                                     </figure>
                                 </div>
                             </div>
 
-                            <div class="list_2im1 clearfix position-absolute top-0 text-end w-100 p-3">
-                                <h6 class="mb-0"><span class="span_1 d-inline-block bg_blue text-white">30%</span>
-                                    <br>
-                                    <span class="span_1 d-inline-block bg_light">SALE</span>
-                                </h6>
-                            </div>
                             <div class="list_2im2 clearfix p-3 text-center">
-                                <h4>Semp Porta</h4>
-                                <h5><span
-                                        class="text-decoration-line-through fw-normal font_14 text-muted">$40.00</span>
-                                    $28.00</h5>
-                                <h6 class="mb-0 mt-3 text-uppercase"><a class="button" href="detail.html"><i
-                                            class="fa fa-shopping-cart me-1"></i> Add To Cart</a></h6>
+                                <h4>{{ $product->name }}</h4>
+                                <span class="text-sm">Stock : {{ $product->stock }}</span>
+                                <h5>Rp.{{ $product->price }}</h5>
+                                <h6 class="mb-0 mt-3 text-uppercase"><a href="/shop" class="button" id="{{ $product->id }}"
+                                        onclick="addCart({{ $product->id }})"><i
+                                            class="fa fa-shopping-cart me-1"></i> Go To Shop </a></h6>
                             </div>
                         </div>
                     </div>
