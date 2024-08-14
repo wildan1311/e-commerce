@@ -41,7 +41,7 @@ class CartController extends Controller
 
         if (!($this->checkStock($product, $quantity))) {
             return response()->json([
-                "status" => "failed",
+                "status" => "error",
                 "message" => "Stock Tidak Cukup",
             ]);
         }
@@ -78,16 +78,6 @@ class CartController extends Controller
                 'price' => $cart['price'],
                 'sub_total' => $cart['price'] * $cart['quantity'],
             ]);
-
-            $product = Product::find($cart['id']);
-            $stock = $product->stock - $cart['quantity'];
-
-            if ($product) {
-                $product->update([
-                    'stock' => $stock,
-                    'isActive' => $stock > 0 ? 1 : 0,
-                ]);
-            }
         }
 
         try{
@@ -97,13 +87,13 @@ class CartController extends Controller
 
             return redirect()->away($snap->redirect_url);
         }catch(Throwable $e){
-            dd();
+            session()->flash('error', 'Server Error');
+            return redirect()->back();
         }
     }
 
     public function webHookMidtrans()
     {
-        // $payload = $request->getContent();
         $midtrans = new Midtrans();
         $notif = $midtrans->notification();
 
@@ -117,14 +107,21 @@ class CartController extends Controller
             $transaksi = Transaksi::find($order_id);
 
             if ($transaction == 'settlement') {
+                foreach ($transaksi->transaksiDetail as $detail) {
+                    $produk = $detail->product;
+                    $produk->stock -= $detail->quantity;
+                    $produk->isActive = $produk->stock == 0 ? 0 : 1;
+                    $produk->save();
+                }
                 $transaksi->update(['status' => 'settlement']);
             } else if ($transaction == 'expired') {
                 $transaksi->update(['status' => $transaction]);
             } else if ($transaction == 'cancel') {
                 $transaksi->update(['status' => $transaction]);
             }
+            return response()->json(['status' => "Berhasil"]);
         } catch (Throwable $th) {
-            echo "error";
+            return response($th->getMessage());
         }
         // finally {
         //     return response()->json(['message' => 'Webhook received']);
@@ -165,5 +162,13 @@ class CartController extends Controller
             "status" => "success",
             "message" => "Cart item successfully deleted",
         ]);
+    }
+
+    public function invoice(Request $request){
+        $order_id = explode('_', $request->order_id);
+        $order_id = $order_id[1];
+
+        $transaksi = Transaksi::find($order_id);
+        return view('pages.user.invoice.index', compact('transaksi'));
     }
 }
