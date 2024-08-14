@@ -155,7 +155,10 @@ class CartController extends Controller
         ]);
 
         $carts = Cache::get('cart_' . auth()->id());
-        $carts = (array_splice($carts, $request->product_id));
+
+        if($carts[$request->product_id]){
+            unset($carts[$request->product_id]);
+        }
 
         Cache::forever('cart_' . auth()->id(), $carts);
         return response()->json([
