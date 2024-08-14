@@ -31,6 +31,7 @@
 
                         <div class="list_2im2 clearfix p-3 text-center">
                             <h4>{{ $product->name }}</h4>
+                            <span class="text-sm">Stock : {{$product->stock}}</span>
                             <h5>Rp.{{ $product->price }}</h5>
                             <h6 class="mb-0 mt-3 text-uppercase"><button class="button" id="{{ $product->id }}"
                                     onclick="addCart({{ $product->id }})"><i class="fa fa-shopping-cart me-1"></i> Add
@@ -52,8 +53,10 @@
                         '_token': '{{ csrf_token() }}'
                     },
                     success: function(data) {
-                        alert(data.message);
-                        window.location.reload();
+                        Toast.fire({
+                            icon: data.status,
+                            title: data.message
+                        })
                     }
                 });
 
