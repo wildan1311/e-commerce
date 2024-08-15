@@ -29,10 +29,7 @@ class ProductRequest extends FormRequest
             'isActive' => [
                 'required',
                 'numeric',
-                'between:0,1',
-                Rule::prohibitedIf(function () {
-                    return $this->get('stock') == 0 && $this->get('isActive') == 1;
-                }),
+                'between:0,1'
             ],
             'image' => 'mimes:jpeg,png,jpg,gif|max:2048',
         ];

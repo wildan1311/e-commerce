@@ -110,7 +110,6 @@ class CartController extends Controller
                 foreach ($transaksi->transaksiDetail as $detail) {
                     $produk = $detail->product;
                     $produk->stock -= $detail->quantity;
-                    $produk->isActive = $produk->stock == 0 ? 0 : 1;
                     $produk->save();
                 }
                 $transaksi->update(['status' => 'settlement']);
