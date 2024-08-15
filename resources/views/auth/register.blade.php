@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-guest-layout :header="false">
     <x-authentication-card>
         <x-slot name="logo">
             <x-authentication-card-logo />

@@ -23,7 +23,7 @@
                         <div class="list_2im1 clearfix">
                             <div class="grid clearfix">
                                 <figure class="effect-jazz mb-0 w-[270px] h-[270px]">
-                                    <a href="detail.html"><img src="{{asset('storage/'. $product->image)}}" class="w-full object-cover"
+                                    <a href="#"><img src="{{asset('storage/'. $product->image)}}" class="w-full object-cover"
                                             alt="abc"></a>
                                 </figure>
                             </div>
@@ -33,7 +33,7 @@
                             <h4>{{ $product->name }}</h4>
                             <span class="text-sm">Stock : {{$product->stock}}</span>
                             <h5>Rp.{{ $product->price }}</h5>
-                            <h6 class="mb-0 mt-3 text-uppercase"><button class="button" id="{{ $product->id }}"
+                            <h6 class="mb-0 mt-3 text-uppercase"><button @disabled($product->stock < 1 || $product->isActive == 0) class="button disabled:bg-slate-400 disabled:hover:bg-slate-400 border-none" id="{{ $product->id }}"
                                     onclick="addCart({{ $product->id }})"><i class="fa fa-shopping-cart me-1"></i> Add
                                     To Cart</button></h6>
                         </div>

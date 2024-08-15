@@ -8,9 +8,9 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <a href="{{route('products.create')}}" class="rounded-2xl px-5 bg-lime-500 text-md text-white p-3">Tambah</a>
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg mt-10">
-                <table class="w-full text-center text-md rtl:text-right text-gray-500">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg mt-10 p-10">
+                <table id="table" class="w-full text-center text-md rtl:text-right text-gray-500">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 h-16">
                         <tr>
                             <td>No</td>
                             <td>Name</td>
@@ -43,4 +43,11 @@
             </div>
         </div>
     </div>
+    @push('js')
+        <script>
+            $(document).ready(function() {
+                $('#table').DataTable();
+            });
+        </script>
+    @endpush
 </x-app-layout>

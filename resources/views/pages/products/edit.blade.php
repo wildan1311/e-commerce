@@ -7,7 +7,7 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg mt-10">
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg mt-10 p-10">
                 <form action="{{route('products.update', $product->id)}}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
@@ -27,7 +27,7 @@
                         <div class="text-red-500 text-sm">{{ $message }}</div>
                     @enderror
                     <x-label> Active </x-label>
-                    <select name="isActive" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                    <select name="isActive" class="mb-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                         <option selected disabled>Select ones</option>
                         <option value="1" {{$product->isActive == 1 ? 'selected' : ''}}>Active</option>
                         <option value="0" {{$product->isActive != 1? 'selected' : ''}}>Inactive</option>

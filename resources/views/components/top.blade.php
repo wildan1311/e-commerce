@@ -3,7 +3,7 @@
         <div class="row top_1">
             <div class="col-md-3 my-auto">
                 <div class="top_1l pt-1">
-                    <h2 class="mb-0"><a href="index.html"><i class="fa fa-recycle col_blue align-middle"></i>
+                    <h2 class="mb-0"><a href="/"><i class="fa fa-recycle col_blue align-middle"></i>
                             EZECT <br> <span class="font_14 text-muted fw-normal">Electric Store</span></a></h2>
                 </div>
             </div>

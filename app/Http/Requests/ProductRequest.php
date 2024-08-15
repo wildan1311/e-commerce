@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ProductRequest extends FormRequest
 {
@@ -25,7 +26,14 @@ class ProductRequest extends FormRequest
             'name' => 'required',
             'price' => 'required|numeric',
             'stock' => 'required',
-            'isActive' => 'required|numeric|between:0,1',
+            'isActive' => [
+                'required',
+                'numeric',
+                'between:0,1',
+                Rule::prohibitedIf(function () {
+                    return $this->get('stock') == 0 && $this->get('isActive') == 1;
+                }),
+            ],
             'image' => 'mimes:jpeg,png,jpg,gif|max:2048',
         ];
     }
