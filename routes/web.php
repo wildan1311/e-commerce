@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $products = Product::where('isActive', 1)->whereHas('transaksiDetail', function($transaksiDetail){
+    $products = Product::whereHas('transaksiDetail', function($transaksiDetail){
         $transaksiDetail->havingRaw('COUNT(*) > 3');
     })->limit(4)->get();
     return view('welcome', compact('products'));
