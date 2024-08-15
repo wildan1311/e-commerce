@@ -33,7 +33,7 @@ class Midtrans
         \Midtrans\Config::$isProduction = $this->isProduction;
         \Midtrans\Config::$isSanitized = $this->isSanitized;
         \Midtrans\Config::$is3ds = $this->is3ds;
-        // \Midtrans\Config::$overrideNotifUrl = "http://masbro-canteen.me/api/order/callback";
+        \Midtrans\Config::$overrideNotifUrl = config('midtrans.notif_url');
     }
 
     public function notification(){

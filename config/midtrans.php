@@ -4,6 +4,7 @@ return [
     'mercant_id' => env('MIDTRANS_MERCHAT_ID'),
     'client_key' => env('MIDTRANS_CLIENT_KEY'),
     'server_key' => env('MIDTRANS_SERVER_KEY'),
+    'notif_url' => env('MIDTRANS_CALLBACK'),
 
     'is_production' => env('MIDTRANS_IS_PRODUCTION'),
     'is_sanitized' => env('MIDTRANS_IS_SANITIZED'),
