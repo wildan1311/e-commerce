@@ -49,4 +49,4 @@ Waktu pengerjaan technical test ini adalah 9 Jam 7 Menit 10 Detik.
         * Email: maulana123@gmail.com
         * Password: maulana123
 3. Demo Video
-   Video demo dapat dilihat di link drive berikut [ini](https://drive.google.com/file/d/1z9xf7jRK6of6SL2qWeBqFhTm-P3qrS8L/view?usp=sharing)
+   Video demo dapat dilihat di link drive berikut [ini](https://drive.google.com/file/d/1VFzeqFv_rl0yun6oHTO5da0Y2aesHed2/view?usp=sharing)
