@@ -42,7 +42,7 @@ class CartController extends Controller
         if (!($this->checkStock($product, $quantity))) {
             return response()->json([
                 "status" => "error",
-                "message" => "Stock Tidak Cukup",
+                "message" => "Out of stock",
             ]);
         }
 
@@ -54,7 +54,7 @@ class CartController extends Controller
         Cache::forever('cart_' . auth()->id(), $carts);
         return response()->json([
             "status" => "success",
-            "message" => "Berhasil ditambahkan",
+            "message" => "Cart item successfully added",
         ]);
     }
 
@@ -119,7 +119,7 @@ class CartController extends Controller
             } else if ($transaction == 'cancel') {
                 $transaksi->update(['status' => $transaction]);
             }
-            return response()->json(['status' => "Berhasil"]);
+            return response()->json(['status' => "success"]);
         } catch (Throwable $th) {
             return response($th->getMessage());
         }

@@ -44,9 +44,9 @@ class ProductController extends Controller
                 'isActive' => $request->isActive,
                 'image' => @$path,
             ]);
-            return redirect()->route('products.index');
+            return redirect()->route('products.index')->banner('Products successfully added');
         }catch(Throwable $e){
-            return redirect()->route('products.index');
+            return redirect()->route('products.index')->banner('Server error');
         }
     }
 
@@ -85,7 +85,7 @@ class ProductController extends Controller
                 'isActive' => $request->isActive,
                 'image' => @$path ??  $product->image,
             ]);
-            $request->session()->flash('flash.banner', 'Yay it works!');
+            $request->session()->flash('flash.banner', 'Product successfully updated');
             $request->session()->flash('flash.bannerStyle', 'success');
             return redirect()->route('products.index');
         }catch(Throwable $e){

@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class ShopController extends Controller
 {
     public function index(Request $request){
-        $products = Product::where('isActive', 1);
+        $products = Product::orderByDesc('isActive');
         if($request->search){
             $products = $products->where('name', 'like', '%'.$request->search.'%');
         }
